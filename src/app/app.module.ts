@@ -8,36 +8,33 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { firebaseConfig } from 'src/environments/environment';
+import { FirebaseRepositoryService } from './Repository/FirebaseRepository.service';
 
-// Import ng-circle-progress
-import { NgCircleProgressModule } from 'ng-circle-progress';
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-    // Specify ng-circle-progress as an import
-    NgCircleProgressModule.forRoot(
-{
-      // set defaults here
-      radius: 100,
-      outerStrokeWidth: 16,
-      innerStrokeWidth: 8,
-      outerStrokeColor: "#78c000",
-      innerStrokeColor: "#c7e596",
-      animationDuration: 300,
-      animation: false,
-      responsive: true,
-
-
-lazy : false}
-)],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+  ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    FirebaseRepositoryService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
