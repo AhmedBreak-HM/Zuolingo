@@ -14,6 +14,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { firebaseConfig } from 'src/environments/environment';
 import { FirebaseRepositoryService } from './Repository/FirebaseRepository.service';
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 
 
@@ -33,7 +35,8 @@ import { FirebaseRepositoryService } from './Repository/FirebaseRepository.servi
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    FirebaseRepositoryService
+    FirebaseRepositoryService,
+    AuthService,UserService
   ],
   bootstrap: [AppComponent]
 })

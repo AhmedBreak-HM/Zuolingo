@@ -7,25 +7,59 @@
     </ion-card-header>
 
     <ion-card-content>
+      <form #loginForm="ngForm" (ngSubmit)="signUp()">
 
-      <ion-item lines="none" style=" margin-bottom: 15px;" class="ion-margin-bottom" class="roundedInput">
-        <ion-input placeholder="Enter your name" type="text"></ion-input>
-      </ion-item>
 
-      <ion-item lines="none" style=" margin-bottom: 15px;" class="ion-margin-bottom" class="roundedInput">
-        <ion-input type="email" placeholder="Your Mail"></ion-input>
-      </ion-item>
+        <ion-item lines="none" style=" margin-bottom: 15px;" class="ion-margin-bottom" class="roundedInput">
+          <ion-input [(ngModel)]="user.displayName" required="true" #displayName="ngModel" name="displayName"
+            placeholder="Enter your name" type="text"></ion-input>
+        </ion-item>
+        <ion-item *ngIf=" displayName.invalid && displayName.touched" lines="none">
+          <ion-text color="danger">
+            Please enter your name.
+          </ion-text>
+        </ion-item>
 
-      <ion-item lines="none" style=" margin-bottom: 15px;" class="ion-margin-bottom" class="roundedInput">
-        <ion-input type="password" placeholder="Password"></ion-input>
-      </ion-item>
 
-      <ion-item lines="none" style=" margin-bottom: 15px;" class="ion-margin-bottom" class="roundedInput">
-        <ion-input type="password" placeholder="Confirm Password"></ion-input>
-      </ion-item>
-      <ion-button class="ion-margin-top" disabled="true" expand="block" shape="round" color="primary">
-        Sign up
-      </ion-button>
+        <ion-item lines="none" style=" margin-bottom: 15px;" class="ion-margin-bottom" class="roundedInput">
+          <ion-input [(ngModel)]="user.email" #email="ngModel" name="email" required="true" type="email"
+            placeholder="Your Mail"></ion-input>
+        </ion-item>
+        <ion-item *ngIf=" email.invalid && email.touched" lines="none">
+          <ion-text color="danger">
+            Please enter your email.
+          </ion-text>
+        </ion-item>
+
+
+        <ion-item lines="none" style=" margin-bottom: 15px;" class="ion-margin-bottom" class="roundedInput">
+          <ion-input [(ngModel)]="user.password" #password="ngModel" name="password" minlength="6" required="true"
+            type="password" placeholder="Password"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="password.touched && password.errors?.required" lines="none">
+          <ion-text color="danger">
+            Please enter your password.
+          </ion-text>
+        </ion-item>
+
+
+        <ion-item lines="none" style=" margin-bottom: 15px;" class="ion-margin-bottom" class="roundedInput">
+          <ion-input [(ngModel)]="user.confirmPassword" #confirmPassword="ngModel" name="confirmPassword" minlength="6"
+            required="true" type="password" placeholder="Confirm Password"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="confirmPassword.touched && confirmPassword.errors?.required && confirmPassword== password"
+          lines="none">
+          <ion-text color="danger">
+            Password dosnt match.
+          </ion-text>
+        </ion-item>
+
+
+        <ion-button type="submit" class="ion-margin-top" [disabled]="loginForm.invalid"  expand="block" shape="round" color="primary">
+          Sign up
+        </ion-button>
+      </form>
+
 
     </ion-card-content>
     <ion-card-header>

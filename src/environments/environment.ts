@@ -7,13 +7,16 @@ export const environment = {
 };
 
 export const firebaseConfig = {
-  apiKey: '<your-key>',
-  authDomain: '<your-project-authdomain>',
-  databaseURL: '<your-database-URL>',
-  projectId: '<your-project-id>',
-  storageBucket: '<your-storage-bucket>',
-  messagingSenderId: '<your-messaging-sender-id>'
+  apiKey: "AIzaSyCltH1B4Nyme0HaTBKhgE09mra36BoGN4M",
+  authDomain: "zuolingo.firebaseapp.com",
+  projectId: "zuolingo",
+  storageBucket: "zuolingo.appspot.com",
+  messagingSenderId: "355894687909",
+  appId: "1:355894687909:web:e004b511a029904900354c",
+  measurementId: "G-Y0HTM3B5YN"
+
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
