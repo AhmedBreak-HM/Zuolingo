@@ -6,12 +6,25 @@ import { TabsPage } from './tabs.page';
 const routes: Routes = [
   {
     path: '',
-    component: TabsPage
-  }
+    component: TabsPage,
+    children: [
+      {
+        path: 'topic',
+        loadChildren: () => import('./topic-list/topic-list.module').then(m => m.TopicListPageModule)
+      },
+      {
+        path: '',
+        redirectTo: '/tabs/topic',
+        pathMatch: 'full'
+      }
+    ]
+  },
+
+
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

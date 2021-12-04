@@ -40,10 +40,11 @@ export class LoginPage implements OnInit {
     });
   }
   async logInFacebook() {
-    const credential = await this.authService.SignUpFacebook();
-    return this.updateUserData(credential.user).then(() => {
-      this.router.navigate(['/tabs']);
-    });
+    this.router.navigate(['/tabs']);
+    // const credential = await this.authService.SignUpFacebook();
+    // return this.updateUserData(credential.user).then(() => {
+    //   this.router.navigate(['/tabs']);
+    // });
   }
   private updateUserData(user) {
     // Sets user data to firestore on login
